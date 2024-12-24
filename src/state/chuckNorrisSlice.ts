@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 interface ChuckNorrisState {
-  value: string;
+  jokes: string[];
 }
 
 const initialState: ChuckNorrisState = {
-  value: "",
+  jokes: [],
 }
 
 const checkNorrisSlice = createSlice({
@@ -16,7 +16,7 @@ const checkNorrisSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getMusicalChuckJoke.fulfilled,
       (state, action: PayloadAction<string>) => {
-        state.value += action.payload + "\n";
+        state.jokes.push(action.payload)
       }
     )
   }
