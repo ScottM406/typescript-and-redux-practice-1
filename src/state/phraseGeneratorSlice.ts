@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 
 interface PhraseGeneratorState {
