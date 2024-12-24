@@ -4,13 +4,17 @@ import { getMusicalChuckJoke } from "../state/chuckNorrisSlice";
 
 const ChuckNorris = () => {
 
-  const chuckNorrisJoke = useSelector((state: RootState) => state.chuckNorris.value)
+  const chuckNorrisJokes = useSelector((state: RootState) => state.chuckNorris.jokes)
   const dispatch = useDispatch<AppDispatch>();
 
   return (
     <>
     <h1>Check Norris Jokes:</h1>
-    <h2>{chuckNorrisJoke}</h2>
+    <div>
+      {chuckNorrisJokes.map((joke, index) => (
+        <h2 key={index}>{joke}</h2>
+      ))}
+    </div>
     <div>
       <button onClick={() => dispatch(getMusicalChuckJoke())}>Musical Chuck joke</button>
     </div>
