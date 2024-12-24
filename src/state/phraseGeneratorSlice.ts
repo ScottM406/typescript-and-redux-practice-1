@@ -15,22 +15,28 @@ const phraseGeneratorSlice = createSlice({
   initialState,
   reducers: {
     generateNoun: (state) => {
-      state.value += faker.word.noun() + " ";
+      const word = faker.word.noun();
+      state.value += state.value ? word + " " : word.charAt(0).toUpperCase() + word.slice(1) + " ";
     },
     generateVerb: (state) => {
-      state.value += faker.word.verb() + " ";
+      const word = faker.word.verb();
+      state.value += state.value ? word + " " : word.charAt(0).toUpperCase() + word.slice(1) + " ";
     },
     generatePastTenseVerb: (state) => {
-      state.value += faker.word.verb() + "ing" + " ";
+     const word = faker.word.verb() + "ing";
+     state.value += state.value ? word + " " : word.charAt(0).toUpperCase() + word.slice(1) + " ";
     },
     generateConjunction: (state) => {
-      state.value += faker.word.conjunction() + " ";
+      const word = faker.word.conjunction();
+      state.value += state.value ? word + " " : word.charAt(0).toUpperCase() + word.slice(1) + " ";
     },
     generateAdjective: (state) => {
-      state.value += faker.word.adjective() + " ";
+      const word = faker.word.adjective();
+      state.value += state.value ? word + " " : word.charAt(0).toUpperCase() + word.slice(1) + " ";
     },
     generateAdverb: (state) => {
-      state.value += faker.word.adverb() + " ";
+      const word = faker.word.adverb();
+      state.value += state.value ? word + " " : word.charAt(0).toUpperCase() + word.slice(1) + " ";
     }
   },
 });
