@@ -1,4 +1,5 @@
 import Counter from "./components/Counter";
+import PhraseGenerator from "./components/PhraseGenerator";
 
 function App() {
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <h1>Typescript and Redux Practice</h1>
       <Counter />
+      <PhraseGenerator />
     </>
   )
 }
