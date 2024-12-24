@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 interface ChuckNorrisState {
-  jokes: string[];
+  musicalJokes: string[];
+  scientificJokes: string[];
 }
 
 const initialState: ChuckNorrisState = {
-  jokes: [],
+  musicalJokes: [],
+  scientificJokes: [],
 }
 
 const checkNorrisSlice = createSlice({
@@ -16,7 +18,7 @@ const checkNorrisSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getMusicalChuckJoke.fulfilled,
       (state, action: PayloadAction<string>) => {
-        state.jokes.push(action.payload)
+        state.musicalJokes.push(action.payload)
       }
     )
   }
@@ -26,6 +28,16 @@ export const getMusicalChuckJoke = createAsyncThunk(
   "chuckNorris/getMusicalChuckJoke",
   async () => {
     const response = await fetch("https://api.chucknorris.io/jokes/random?category=music");
+    const jokeJSON = await response.json();
+    const joke = jokeJSON.value
+    return joke;
+  }
+)
+
+export const getScientificChuckJoke = createAsyncThunk(
+  "chuckNorris/getMusicalChuckJoke",
+  async () => {
+    const response = await fetch("https://api.chucknorris.io/jokes/random?category=science");
     const jokeJSON = await response.json();
     const joke = jokeJSON.value
     return joke;
